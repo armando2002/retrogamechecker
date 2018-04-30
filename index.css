@@ -1,0 +1,12 @@
+body {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    background: lightgray;
+    color: #666;
+}
+
+.heading {
+    font-weight: 900;
+    color: red;
+}
