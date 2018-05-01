@@ -8,11 +8,9 @@ $( document ).ready(function() {
 
     // create a div element containing the game information
     function renderResults(result) {
-        console.log(result);
-        console.log(result.product-name);
-        console.log(`${result.id}`);
-       // console.log(`${result.product-name}`);
-    }
+        console.log(result['product-name']);
+        console.log(result.id);
+        }
 
     // function to add each HTML Div to page using .html
     function displayResults(data) {
