@@ -10,3 +10,15 @@ body {
     font-weight: 900;
     color: red;
 }
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.results {
+    border: 1px solid black;
+    width: 75%;
+    margin: auto;
+}

@@ -8,9 +8,14 @@ $( document ).ready(function() {
 
     // create a div element containing the game information
     function renderResults(result) {
-        const results = `<div>
+        // variable for parsed price
+        const price = parseFloat(result['loose-price'] / 100).toFixed(2);
+        const dollarPrice = `Loose price: $${price}`;
+
+        const results = `<div class="results">
             <h2> ${result['product-name']} </h2>
-            <p> ${result['loose-price']} </p>
+            <h3> System: ${result['console-name']} </h3>
+            <p> ${dollarPrice} </p>
         </div>`;
         return results;
         }
