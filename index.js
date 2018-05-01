@@ -8,13 +8,18 @@ $( document ).ready(function() {
 
     // create a div element containing the game information
     function renderResults(result) {
-        console.log(result['product-name']);
-        console.log(result.id);
+        const results = `<div>
+            <h2> ${result['product-name']} </h2>
+            <p> ${result['loose-price']} </p>
+        </div>`;
+        return results;
         }
 
     // function to add each HTML Div to page using .html
     function displayResults(data) {
         const results = data.products.map((item, index) => renderResults(item));
+        // debug to see results
+        console.log(results);
         $('.js-main').html(results);
     }
 
@@ -25,7 +30,6 @@ $( document ).ready(function() {
             q: 'contra',
             t: VGPC_API_KEY
         },
-        // make a 2nd ajax call to twitch to grab images based on IDs (if they match)
         success: displayResults,
         });
 
