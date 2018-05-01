@@ -13,9 +13,9 @@ $( document ).ready(function() {
         const dollarPrice = `Loose price: $${price}`;
 
         const results = `<div class="results">
-            <h2> ${result['product-name']} </h2>
-            <h3> System: ${result['console-name']} </h3>
-            <p> ${dollarPrice} </p>
+            <h2 class="title"> ${result['product-name']} </h2>
+            <h3 class="system"> System: ${result['console-name']} </h3>
+            <p class="price"> ${dollarPrice} </p>
         </div>`;
         return results;
         }
@@ -44,10 +44,9 @@ $( document ).ready(function() {
 });
     // TO DO
 
-        // need to think about way to pair price and image API requests if it is needed
+        // need to think about way to pair price and image API requests if it is needed - TBD, IDs do not match between APIs and no API has prices except VGPC
 
-        // need to convert price to USD (ex. 4009 to $40.09)
-        // parseFloat(4009/100).toFixed(2) per Krishna
+        // NICE TO HAVE
 
         // think of a way to create a dynamic dropdown to filter console based on query,
         // maybe using a GET request to populate an array based on console in the JSON response?
