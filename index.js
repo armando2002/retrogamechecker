@@ -8,10 +8,8 @@ $( document ).ready(function() {
 
     // create a div element containing the game information
     function renderResults(result) {
-        return `
-        <div>
-            <h2> ${result.products.product-name} </h2>
-        </div>`;
+        console.log(result);
+        console.log(`${result.product-name}`);
     }
 
     // function to add each HTML Div to page using .html
