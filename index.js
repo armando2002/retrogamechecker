@@ -1,47 +1,69 @@
-$( document ).ready(function() {
+//store necessary keys
+const VGPC_API_KEY = "d54ae2255c2fe8e39e936c398404eb52844da006";
+const GB_KEY = "4481200dc9e8799d83b4735342f8419d172c16cf";
+const VGPC_SEARCH_URL = 'https://www.pricecharting.com/api/products?';
 
-    //store necessary keys
-    const TWITCH_CLIENT_ID = "cxzy4rz2gbrana3nh73ty2sgvj8s01";
-    const VGPC_API_KEY = "d54ae2255c2fe8e39e936c398404eb52844da006";
-    const GB_KEY = "4481200dc9e8799d83b4735342f8419d172c16cf";
-
-
-    // create a div element containing the game information
-    function renderResults(result) {
-        // variable for parsed price
-        const price = parseFloat(result['loose-price'] / 100).toFixed(2);
-        const dollarPrice = `Loose price: $${price}`;
-
-        const results = `<div class="results">
-            <h2 class="title"> ${result['product-name']} </h2>
-            <h3 class="system"> System: ${result['console-name']} </h3>
-            <p class="price"> ${dollarPrice} </p>
-        </div>`;
-        return results;
-        }
-
-    // function to add each HTML Div to page using .html
-    function displayResults(data) {
-        const results = data.products.map((item, index) => renderResults(item));
-        // debug to see results
-        console.log(results);
-        $('.js-main').html(results);
-    }
-
-    // call VGPC for prices
-    $.ajax({
-        url: 'https://www.pricecharting.com/api/products?',
+// call VGPC for prices
+function getApiData(searchTerm, callback) {
+    const settings= {
+        url: VGPC_SEARCH_URL,
         data: {
-            q: 'contra',
+            q: `${searchTerm}`,
             t: VGPC_API_KEY
         },
-        success: displayResults,
-        });
+        dataType: 'json',
+        type: 'GET',
+        success: callback
+    };
 
-    // add static example of pulling images first
-        
-    
-});
+        $.ajax(settings);
+    }
+
+// create a div element containing the game information
+function renderResults(result) {
+    // variable for parsed price
+    const price = parseFloat(result['loose-price'] / 100).toFixed(2);
+    const dollarPrice = `Loose price: $${price}`;
+
+    const results = `<div class="results">
+        <h2> ${result['product-name']} </h2>
+        <!-- add image to left -->
+        <h3 class="system"> System: ${result['console-name']} </h3>
+        <p class="price"> ${dollarPrice} </p>
+    </div>`;
+    return results;
+    }
+
+// function to add each HTML Div to page using .html
+function displayResults(data) {
+    const results = data.products.map((item, index) => renderResults(item));
+    // debug to see results
+    console.log(results);
+    $('.js-main').html(results);
+}
+
+function watchSubmit() {
+    $('.js-search-form').submit(event => {
+        event.preventDefault();
+
+        // remove contra placeholder and either replace with query or make blank
+
+
+		// find the value of the entry in the input box with class .js-query 
+		const queryTarget = $(event.currentTarget).find('.js-query');
+		// add query variable = text entry
+		const query = queryTarget.val();
+		// clear out the input
+		queryTarget.val("");
+		// call the API using the query variable as arg1 and the displayGitHubSearchData function as a callback using the results
+		getApiData(query, displayResults);
+
+    });
+}
+
+$(watchSubmit);
+
+
     // TO DO
 
         // need to think about way to pair price and image API requests if it is needed - TBD, IDs do not match between APIs and no API has prices except VGPC
