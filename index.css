@@ -21,6 +21,7 @@ main {
     flex-direction: column;
     justify-content: center;
     background: #D7E8FA;
+    padding: 2px;
 }
 
 .results {
@@ -28,6 +29,10 @@ main {
     width: 75%;
     margin: auto;
     padding: 2px;
+}
+
+a {
+    color: #D7E8FA;
 }
 
 .topSection {
