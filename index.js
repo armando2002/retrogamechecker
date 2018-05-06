@@ -1,7 +1,10 @@
-//store necessary keys
+//pricecharting api key and url
 const VGPC_API_KEY = "d54ae2255c2fe8e39e936c398404eb52844da006";
-const GB_KEY = "4481200dc9e8799d83b4735342f8419d172c16cf";
 const VGPC_SEARCH_URL = 'https://www.pricecharting.com/api/products?';
+// YouTube API Key
+const API_KEY = 'AIzaSyAhE7phirGx9wlS2auDO9cIcG_s0NY8ra8';
+// YouTube Search URL
+const YOUTUBE_SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search';
 
 // call VGPC for prices
 function getApiData(searchTerm, callback) {
@@ -18,6 +21,23 @@ function getApiData(searchTerm, callback) {
 
         $.ajax(settings);
     }
+
+// call YouTube for thumbnail image from 1st video result
+function getThumbnail(searchTerm, callback) {
+	const settings = {
+		url: YOUTUBE_SEARCH_URL,
+		data: {
+			q: `${searchTerm}`,
+			part: 'snippet',
+			key: API_KEY
+		},
+		dataType: 'json',
+		type: 'GET',
+		success: callback
+	};
+
+	$.ajax(settings);
+}
 
 // grab an image with the jsob blurb for each item and somehow store an image an array that matches the json index with
 
@@ -65,12 +85,13 @@ function watchSubmit() {
 		// clear out the input
 		queryTarget.val("");
 		// call the API using the query variable as arg1 and the displayGitHubSearchData function as a callback using the results
-		getApiData(query, displayResults);
+        getApiData(query, displayResults);
 
     });
 }
 
 $(watchSubmit);
+
 
 
     // TO DO
