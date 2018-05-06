@@ -27,6 +27,7 @@ main {
     border: 1px solid black;
     width: 75%;
     margin: auto;
+    padding: 2px;
 }
 
 .topSection {
