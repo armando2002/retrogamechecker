@@ -54,11 +54,16 @@ function renderResults(result) {
     const dollarPrice = `Loose price: $${price}`;
 
     // add in image here to div element
+    var fixedName = encodeURIComponent(result['product-name']);
+    var fixedConsole = encodeURIComponent(result[`console-name`]);
     const results = `<div class="results">
         <h2> ${result['product-name']} </h2>
         <!-- add image to left -->
         <h3 class="system"> System: ${result['console-name']} </h3>
         <p class="price"> ${dollarPrice} </p>
+        <p>Shop Now:</p>
+        <button class="btn btn-block" onclick="window.open('https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=`+fixedName+fixedConsole+`')"><i class="fab fa-amazon fa-2x"></i></button>
+        <button class="btn btn-block" onclick="window.open('https://www.ebay.com/sch/i.html?_nkw=`+fixedName+`%20`+fixedConsole+`&ssPageName=GSTL')"><i class="fab fa-ebay fa-2x"></i></button>
     </div>`;
     return results;
     }
