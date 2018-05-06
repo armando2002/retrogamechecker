@@ -19,12 +19,21 @@ function getApiData(searchTerm, callback) {
         $.ajax(settings);
     }
 
+// grab an image with the jsob blurb for each item and somehow store an image an array that matches the json index with
+
+
+
 // create a div element containing the game information
+// add in the image for the game from the google api function
+
+
 function renderResults(result) {
     // variable for parsed price
+    console.log(result);
     const price = parseFloat(result['loose-price'] / 100).toFixed(2);
     const dollarPrice = `Loose price: $${price}`;
 
+    // add in image here to div element
     const results = `<div class="results">
         <h2> ${result['product-name']} </h2>
         <!-- add image to left -->
