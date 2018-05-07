@@ -38,10 +38,6 @@ function getThumbnail(searchTerm, callback) {
 	$.ajax(settings);
 }
 
-// grab an image with the jsob blurb for each item and somehow store an image an array that matches the json index with
-
-
-
 // create a div element containing the game information
 function renderResults(result) {
     // variable for parsed price
@@ -52,9 +48,15 @@ function renderResults(result) {
     // add in image here to div element
     var fixedName = encodeURIComponent(result['product-name']);
     var fixedConsole = encodeURIComponent(result[`console-name`]);
-    const results = `<div class="results">
+    // add variable for each particular result
+    // $("#id").children('.price')
+    // added result ID below and make it dynamic for each item
+    // add image tag below
+    // think of maybe hiding elements and then unhiding at later
+    const results = `<div id="resultId" class="results">
         <h2> ${result['product-name']} </h2>
-        <!-- add image to left -->
+        <img class="thumbnail" src="coin.png"> 
+        <!-- later on, update the image using the YouTube thumbnail -->
         <h3 class="system"> System: ${result['console-name']} </h3>
         <p class="price"> ${dollarPrice} </p>
         <h4>Shop Now:</h4>
@@ -69,9 +71,11 @@ function renderResults(result) {
 // function to add each HTML Div to page using .html
 function displayResults(data) {
     const results = data.products.map((item, index) => renderResults(item));
-    // debug to see results
-    console.log(results);
     $('.js-main').html(results);
+
+    // data.products.forEach
+    // getYoutubedata(id)
+    // then update the dom for each element, find it select it and use .html to append thumbnail image
 }
 
 function watchSubmit() {
