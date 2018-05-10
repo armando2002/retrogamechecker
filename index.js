@@ -41,21 +41,19 @@ function getThumbnail(searchTerm, callback) {
 // create a div element containing the game information
 function renderResults(result) {
     // variable for parsed price
-    console.log(result);
     const price = parseFloat(result['loose-price'] / 100).toFixed(2);
     const dollarPrice = `Loose price: $${price}`;
-
-    // add in image here to div element
+    // URL encodings for shop links
     var fixedName = encodeURIComponent(result['product-name']);
     var fixedConsole = encodeURIComponent(result[`console-name`]);
+
     // add variable for each particular result
     // $("#id").children('.price')
     // added result ID below and make it dynamic for each item
-    // add image tag below
-    // think of maybe hiding elements and then unhiding at later
+
     const results = `<div id="resultId" class="results">
         <h2> ${result['product-name']} </h2>
-        <img class="thumbnail" src="coin.png"> 
+        <img class="thumbnail" src="coin.png">
         <!-- later on, update the image using the YouTube thumbnail -->
         <h3 class="system"> System: ${result['console-name']} </h3>
         <p class="price"> ${dollarPrice} </p>
@@ -68,10 +66,12 @@ function renderResults(result) {
 
 // add total results to page by counting total # of items in JSON response
 
+
 // function to add each HTML Div to page using .html
 function displayResults(data) {
     const results = data.products.map((item, index) => renderResults(item));
     $('.js-main').html(results);
+
 
     // data.products.forEach
     // getYoutubedata(id)
