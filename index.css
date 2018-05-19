@@ -16,6 +16,11 @@ body {
     font-size: 3em;
 }
 
+.js-results {
+    padding: 2px;
+    justify-content: center;
+}
+
 main {
     display: flex;
     flex-direction: column;

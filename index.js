@@ -64,14 +64,14 @@ function renderResults(result) {
     return results;
     }
 
-// add total results to page by counting total # of items in JSON response
-
-
 // function to add each HTML Div to page using .html
 function displayResults(data) {
     const results = data.products.map((item, index) => renderResults(item));
     $('.js-main').html(results);
-
+    // count total results and add to page
+    const totalResults = Object.keys(results).length;
+    const totalResultsHTML = `<h4> Total Results: ${totalResults} </h4>`;
+    $('.js-results').html(totalResultsHTML);
 
     // data.products.forEach
     // getYoutubedata(id)
