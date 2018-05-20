@@ -67,21 +67,26 @@ function renderResults(result) {
 // function to add each HTML Div to page using .html
 function displayResults(data) {
     const results = data.products.map((item, index) => renderResults(item));
-    $('.js-main').html(results);
     // count total results and add to page
     const totalResults = Object.keys(results).length;
     const totalResultsHTML = `<h4> Total Results: ${totalResults} </h4>`;
+    // if results are 0, warn user, else push total and results
+    if(totalResults==0) {
+        alert("No results, try again!");
+    }
+    else{
     $('.js-results').html(totalResultsHTML);
-
-    // data.products.forEach
-    // getYoutubedata(id)
-    // then update the dom for each element, find it select it and use .html to append thumbnail image
+    $('.js-main').html(results);
+    }
 }
 
 function watchSubmit() {
     $('.js-search-form').submit(event => {
         event.preventDefault();
-		// find the value of the entry in the input box with class .js-query 
+        // clear out existing total results and results if a search was already done
+        $('.js-results').html("");
+        $('.js-main').html("");
+		// find the value of the entry in the input box with class .js-query
 		const queryTarget = $(event.currentTarget).find('.js-query');
 		// add query variable = text entry
 		const query = queryTarget.val();
@@ -94,16 +99,3 @@ function watchSubmit() {
 }
 
 $(watchSubmit);
-
-
-
-        // TO DO
-
-        // need to think about way to pair price and image API requests if it is needed - TBD, IDs do not match between APIs and no API has prices except VGPC
-        // add total results to top of page
-        // add a max # of items per page and prev and next page buttons
-
-        // NICE TO HAVE
-
-        // think of a way to create a dynamic dropdown to filter console based on query,
-        // maybe using a GET request to populate an array based on console in the JSON response
