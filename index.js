@@ -38,19 +38,21 @@ function getThumbnail(searchTerm, callback) {
 	$.ajax(settings);
 }
 
+// function to deal with RFC3896 (force URL encoding of /[!'()*])
+function rfc3986EncodeURIComponent (str) {  
+    return encodeURIComponent(str).replace(/[!'()*]/g, escape);  
+}
+
 // create a div element containing the game information
 function renderResults(result) {
     // variable for parsed price
     const price = parseFloat(result['loose-price'] / 100).toFixed(2);
     const dollarPrice = `Loose price: $${price}`;
     // URL encodings for shop links
-    var fixedName = encodeURIComponent(result['product-name']);
-    var fixedConsole = encodeURIComponent(result[`console-name`]);
-
-    // add variable for each particular result
-    // $("#id").children('.price')
-    // added result ID below and make it dynamic for each item
-
+    // create URL encoded variables
+    var fixedName = rfc3986EncodeURIComponent(result['product-name']);
+    var fixedConsole = rfc3986EncodeURIComponent(result[`console-name`]);
+    // prep results HTML
     const results = `<div id="resultId" class="results">
         <h2> ${result['product-name']} </h2>
         <img class="thumbnail" src="coin.png">
