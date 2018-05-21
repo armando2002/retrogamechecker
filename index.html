@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang='en' role="heading">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,8 +18,9 @@
             <span class="title">Retro Game Checker</span>
             <h4 class="subtitle">Check the value of your games</h4>
             <form action="#" class="js-search-form">
-                <label for="query"></label>
-                <input required type="search" class="js-query" placeholder="Search by name">
+                <!-- commenting out label for now to place aria-label directly in form-->
+               <!--  <label for="query" class="form-label">Search by name: </label> -->
+                <input required type="search" class="js-query" placeholder="e.g. Contra" aria-label="Search by name: ">
                 <button type="submit" class="searchButton">Search</button>
             </form>
             <br></br>
