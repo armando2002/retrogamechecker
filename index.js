@@ -21,7 +21,8 @@ function getApiData(searchTerm, callback) {
         $.ajax(settings);
     }
 
-// call YouTube for thumbnail image from 1st video result, currenty not working or used
+// call YouTube for thumbnail image from 1st video result
+// currenty not working or used
 function getThumbnail(searchTerm, callback) {
 	const settings = {
 		url: YOUTUBE_SEARCH_URL,
@@ -77,17 +78,19 @@ function displayResults(data) {
         alert("No results, try again!");
     }
     else{
-    $('.js-results').html(totalResultsHTML);
-    $('.js-main').html(results);
+    // remove hidden attribute for aria-live    
+    // push results and total
+    $('.js-results').prop('hidden', false).html(totalResultsHTML);
+    $('.js-main').prop('hidden', false).html(results);
     }
 }
 
 function watchSubmit() {
     $('.js-search-form').submit(event => {
         event.preventDefault();
-        // clear out existing total results and results if a search was already done
-        $('.js-results').html("");
-        $('.js-main').html("");
+        // clear out existing total results and results if a search was already done and rehide for aria-live
+        $('.js-results').prop('hidden', false).html("");
+        $('.js-main').prop('hidden', false).html("");
 		// find the value of the entry in the input box with class .js-query
 		const queryTarget = $(event.currentTarget).find('.js-query');
 		// add query variable = text entry
