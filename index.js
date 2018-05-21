@@ -1,6 +1,7 @@
-// Pricecharting URL
+// Pricecharting URL & key
 const VGPC_SEARCH_URL = 'https://www.pricecharting.com/api/products?';
-var vgpcapikey = config.VGPC_API_KEY;
+VGPC_API_KEY = 'd54ae2255c2fe8e39e936c398404eb52844da006';
+
 // YouTube URL
 const YOUTUBE_SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search';
 var youtubeapikey = config.API_KEY;
@@ -11,7 +12,7 @@ function getApiData(searchTerm, callback) {
         url: VGPC_SEARCH_URL,
         data: {
             q: `${searchTerm}`,
-            t: vgpcapikey
+            t: VGPC_API_KEY
         },
         dataType: 'json',
         type: 'GET',
