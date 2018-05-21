@@ -2,10 +2,6 @@
 var VGPC_SEARCH_URL = 'https://www.pricecharting.com/api/products?';
 var VGPC_API_KEY = 'd54ae2255c2fe8e39e936c398404eb52844da006';
 
-// YouTube URL
-const YOUTUBE_SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search';
-var youtubeapikey = config.API_KEY;
-
 // call VGPC for prices
 function getApiData(searchTerm, callback) {
     const settings= {
@@ -21,24 +17,6 @@ function getApiData(searchTerm, callback) {
 
         $.ajax(settings);
     }
-
-// call YouTube for thumbnail image from 1st video result
-// currenty not working or used
-function getThumbnail(searchTerm, callback) {
-	const settings = {
-		url: YOUTUBE_SEARCH_URL,
-		data: {
-			q: `${searchTerm}`,
-			part: 'snippet',
-			key: youtubeapikey
-		},
-		dataType: 'json',
-		type: 'GET',
-		success: callback
-	};
-
-	$.ajax(settings);
-}
 
 // function to deal with RFC3896 (force URL encoding of /[!'()*])
 function rfc3986EncodeURIComponent (str) {  
