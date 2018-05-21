@@ -1,6 +1,6 @@
 // Pricecharting URL & key
-const VGPC_SEARCH_URL = 'https://www.pricecharting.com/api/products?';
-VGPC_API_KEY = 'd54ae2255c2fe8e39e936c398404eb52844da006';
+var VGPC_SEARCH_URL = 'https://www.pricecharting.com/api/products?';
+var VGPC_API_KEY = 'd54ae2255c2fe8e39e936c398404eb52844da006';
 
 // YouTube URL
 const YOUTUBE_SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search';
