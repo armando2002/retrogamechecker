@@ -51,7 +51,7 @@ main {
     border: 4px solid white;
     border-radius: 10px;
     width: 66%;
-    margin: auto;
+    margin: 2px auto;
     padding: 2px;
     color: white;
     background: #002CBC;
@@ -71,6 +71,10 @@ main {
 
 a {
     color: #D7E8FA;
+}
+
+.shopText {
+    margin: 2px;
 }
 
 .shopButton {
