@@ -1,6 +1,6 @@
 // Pricecharting URL & key
-var VGPC_SEARCH_URL = 'https://www.pricecharting.com/api/products?';
-var VGPC_API_KEY = 'd54ae2255c2fe8e39e936c398404eb52844da006';
+const VGPC_SEARCH_URL = 'https://www.pricecharting.com/api/products?';
+const VGPC_API_KEY = 'd54ae2255c2fe8e39e936c398404eb52844da006';
 
 // call VGPC for prices
 function getApiData(searchTerm, callback) {
@@ -34,14 +34,13 @@ function renderResults(result) {
     var fixedConsole = rfc3986EncodeURIComponent(result[`console-name`]);
     // prep results HTML
     const results = `<div class="results">
-        <h2> ${result['product-name']} </h2>
+        <h2 class="gameTitle"> ${result['product-name']} </h2>
         <img class="thumbnail" src="coin.png">
-        <!-- later on, update the image using the YouTube thumbnail -->
         <h3 class="system"> System: ${result['console-name']} </h3>
         <p class="price"> ${dollarPrice} </p>
         <h4>Shop Now:</h4>
-        <button class="btn btn-block" aria-label="Shop on Amazon" onclick="window.open('https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=`+fixedName+`%20`+fixedConsole+`')"><i class="fab fa-amazon fa-2x"></i></button>
-        <button class="btn btn-block" aria-label="Shop on eBay" onclick="window.open('https://www.ebay.com/sch/i.html?_nkw=`+fixedName+`%20`+fixedConsole+`&ssPageName=GSTL')"><i class="fab fa-ebay fa-2x"></i></button>        
+        <button class="btn btn-block shopButton" aria-label="Shop on Amazon" onclick="window.open('https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=`+fixedName+`%20`+fixedConsole+`')"><i class="fab fa-amazon fa-2x"></i></button>
+        <button class="btn btn-block shopButton" aria-label="Shop on eBay" onclick="window.open('https://www.ebay.com/sch/i.html?_nkw=`+fixedName+`%20`+fixedConsole+`&ssPageName=GSTL')"><i class="fab fa-ebay fa-2x"></i></button>        
     </div>`;
     return results;
     }
@@ -51,7 +50,8 @@ function displayResults(data) {
     const results = data.products.map((item, index) => renderResults(item));
     // count total results and add to page
     const totalResults = Object.keys(results).length;
-    const totalResultsHTML = `<h4> Total Results: ${totalResults} </h4>`;
+    const totalResultsHTML = `<h4 class="totalResults"> Total Results: ${totalResults} </h4>`;
+    console.log(totalResultsHTML);
     // if results are 0, warn user, else push total and results
     if(totalResults==0) {
         alert("No results, try again!");

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang='en' role="heading">
+<html lang='en'>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Retro Game Checker</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="index.js"></script>
-        <script defer src="https://use.fontawesome.com/releases/v5.0.12/js/all.js" integrity="sha384-Voup2lBiiyZYkRto2XWqbzxHXwzcm4A5RfdfG6466bu5LqjwwrjXCMBQBLMWh7qR" crossorigin="anonymous"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.0.12/js/all.js" integrity="sha384-Voup2lBiiyZYkRto2XWqbzxHXwzcm4A5RfdfG6466bu5LqjwwrjXCMBQBLMWh7qR" crossorigin="anonymous"></script>    
         <link href="index.css" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
         <meta name="description" content="Check the value of retro videogames using Retro Game Checker">
@@ -15,15 +15,13 @@
     <body>
         <header role="banner" class="topbar row topSection">
             <span class="title">Retro Game Checker</span>
-            <h4 class="subtitle">Check the value of your games</h4>
+            <h4 class="subtitle">Check the value of used video games</h4>
             <form action="#" class="js-search-form">
-                <!-- commenting out label for now to place aria-label directly in form-->
-               <!--  <label for="query" class="form-label">Search by name: </label> -->
                 <input required type="search" class="js-query" placeholder="e.g. Contra" aria-label="Search by name: ">
                 <button type="submit" class="searchButton">Search</button>
             </form>
             <br></br>
-            <span>API courtesty of <a href="https://www.pricecharting.com" target="_blank">Pricecharting.com</a></span>    
+            <h5 class="apiLink">API courtesty of <a href="https://www.pricecharting.com" target="_blank">Pricecharting.com</a></h5>    
         </header>
         <div class="js-results" aria-live="assertive" hidden></div>
         <main role="main" class="js-main" aria-live="assertive" hidden>
