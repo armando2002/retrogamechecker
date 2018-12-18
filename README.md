@@ -10,5 +10,4 @@ Screenshot:
 Resources:
 <ul>
   <li>https://www.pricecharting.com/api-documentation</li>
-  <li>https://dev.twitch.tv/docs/api/</li>
 </ul>
