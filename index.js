@@ -1,6 +1,6 @@
 // Pricecharting URL & key
 const VGPC_SEARCH_URL = 'https://www.pricecharting.com/api/products?';
-const VGPC_API_KEY = 'd54ae2255c2fe8e39e936c398404eb52844da006';
+const VGPC_API_KEY = '258551d3d6b97b1a812b8409c83360fd50a1037e';
 
 // call VGPC for prices
 function getApiData(searchTerm, callback) {
